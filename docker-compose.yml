@@ -1,0 +1,40 @@
+services:
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+      args:
+        - PORT=4000
+    container_name: backend
+    hostname: backend
+    network_mode: host
+    ports:
+      - 4000:4000
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+      args:
+        - PORT=3000
+    container_name: frontend
+    hostname: frontend
+    environment:
+      - BACKEND_ENDPOINT="backend:4000"
+    ports:
+      - 3000:3000
+
+  db:
+    image: postgres:latest
+    container_name: db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_HOST=admin
+      - POSTGRES_DB=admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgres/data
+      - ./sql:/docker-entrypoint-initdb.d

@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_HOST=admin
+      - POSTGRES_DB=admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgres/data
+      - ./sql:/docker-entrypoint-initdb.d
