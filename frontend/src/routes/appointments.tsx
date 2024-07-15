@@ -23,7 +23,7 @@ import AppointentForm from "@/components/custom/appointment_form";
 export default function Appointents() {
   const [appointments, setAppointments] = useState<any[]>([]);
 
-  const be_endpoint = "localhost:4000";
+  const be_endpoint = process.env.BACKEND_ENDPOINT ?? "localhost:4000";
   const api_reference = "appointments";
 
   async function fetchAppointments() {

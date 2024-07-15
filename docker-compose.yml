@@ -20,7 +20,7 @@ services:
     container_name: frontend
     hostname: frontend
     environment:
-      - BACKEND_ENDPOINT="backend:4000"
+      - BACKEND_ENDPOINT="localhost:4000"
     ports:
       - 3000:3000
 

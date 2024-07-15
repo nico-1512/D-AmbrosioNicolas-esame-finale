@@ -23,7 +23,7 @@ export default function PendingAppointents() {
   const [professor, setProfessor] = useState<any>();
   const [pendingAppointments, setPendingAppointments] = useState<any[]>([]);
 
-  const be_endpoint = "localhost:4000";
+  const be_endpoint = process.env.BACKEND_ENDPOINT ?? "localhost:4000";
   const api_reference = "pending_appointments";
 
   async function fetchPendingAppointments() {

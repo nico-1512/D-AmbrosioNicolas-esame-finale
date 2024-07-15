@@ -34,7 +34,7 @@ export default function AppointentForm({ onSubmit }: any) {
   const [professorDates, setProfessorDates] = useState<any[]>([]);
   const [date, setDate] = useState(new Date());
 
-  const be_endpoint = "localhost:4000";
+  const be_endpoint = process.env.BACKEND_ENDPOINT ?? "localhost:4000";
   const api_reference = "professors";
 
   async function fetchProfessors() {
@@ -157,7 +157,7 @@ export default function AppointentForm({ onSubmit }: any) {
                   >
                     <SelectTrigger className="w-[180px]">
                       <SelectValue
-                        placeholder="-- Selet meeting date --"
+                        placeholder={field.name}
                         className="w-full"
                       />
                     </SelectTrigger>
